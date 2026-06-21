@@ -20,4 +20,5 @@ Simple VRChat world camera spot prefab.
 
 - Duplicate `Materials/VRCCameraSpotOverlay.mat` and `RenderTextures/VRCCameraSpot.renderTexture` for each independent camera spot.
 - The default render texture is 1280x720.
+- This project is supported with Codex GPT-5.5.
 - MIT licensed. Based on `CameraSystem` by Ottpossum / rhaamo; see `THIRD_PARTY_NOTICES.md`.
