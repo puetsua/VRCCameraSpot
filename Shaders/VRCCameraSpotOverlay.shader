@@ -1,3 +1,7 @@
+// Based on CameraJackShader from rhaamo/CameraSystem by Ottpossum.
+// CameraJackShader credits kurotori and is released under the MIT License.
+// See THIRD_PARTY_NOTICES.md for attribution and license details.
+
 Shader "PuetsuaWorkshop/VRCCameraSpotOverlay"
 {
     Properties

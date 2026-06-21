@@ -2,7 +2,7 @@
 
 Minimal camera spot system for VRChat worlds.
 
-It uses the same basic trick as `Ottpossum/Camera System/Prefabs/EventCameraSystem.prefab`, but with one camera feed and no camera selector UI:
+It is a simplified camera spot package based on the MIT-licensed `rhaamo/CameraSystem` project, especially its `EventCameraSystem`/`CameraJackShader` approach, but with one camera feed and no camera selector UI:
 
 1. A Unity `Camera` renders into `RenderTextures/VRCCameraSpot.renderTexture`.
 2. `Materials/VRCCameraSpotOverlay.mat` displays that render texture.
@@ -56,3 +56,14 @@ For desktop usage, look at the spot and press `F10`, or interact with the object
 Duplicate `VRCCameraSpotOverlay.mat` if you make multiple independent camera spots. `_ForceSpot` and `_MainTex` live on the material, so sharing one material means all spots share the same state and feed.
 
 The default render texture is 1280x720. Increase it if the feed needs to be sharper, or lower it if the world needs to be cheaper.
+
+## Credits And License
+
+This project is MIT licensed.
+
+It is based on `CameraSystem` by Ottpossum / rhaamo:
+
+- https://github.com/rhaamo/CameraSystem
+- MIT License, Copyright (c) 2024 Ottpossum
+
+The fullscreen camera overlay shader is derived from `CameraJackShader.shader`, which credits kurotori and was adapted by ottpossum. See `THIRD_PARTY_NOTICES.md` for the preserved upstream MIT notice.
