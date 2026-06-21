@@ -18,9 +18,10 @@ Simple VRChat world camera spot prefab.
 ## Notes
 
 - Duplicate `Materials/VRCCameraSpotOverlay.mat` and `RenderTextures/VRCCameraSpot.renderTexture` for each independent camera spot.
-- The default render texture is 1280x720 with 4x MSAA to reduce jagged edges.
-- For 8K output, assign `RenderTextures/VRCCameraSpot_8K.renderTexture` to both `SourceCamera_MoveMe` and the `VRCCameraSpot` script's `Source Texture` field.
-- The 8K preset does not use MSAA by default because 8K MSAA is very expensive.
+- The default render texture is QHD 2560x1440 with 4x MSAA to reduce jagged edges.
+- For 4K output, assign `RenderTextures/VRCCameraSpot_4K.renderTexture` to both `SourceCamera_MoveMe` and the `VRCCameraSpot` script's `Source Texture` field.
+- For 8K output, use `RenderTextures/VRCCameraSpot_8K.renderTexture` the same way.
+- The 4K preset uses 2x MSAA. The 8K preset does not use MSAA by default because 8K MSAA is very expensive.
 - The overlay fills the player's view and crops to fit, so it does not show black bars.
 - The sphere is only a camera spot marker. It is not clickable.
 - This project is supported with Codex GPT-5.5.
