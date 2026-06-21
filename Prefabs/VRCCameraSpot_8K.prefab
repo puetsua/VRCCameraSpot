@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 100002}
   - component: {fileID: -4331747121403554994}
   m_Layer: 0
-  m_Name: VRCCameraSpot
+  m_Name: VRCCameraSpot_8K
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: -4331747121403554994}
   sourceCamera: {fileID: 200003}
-  sourceTexture: {fileID: 8400000, guid: a469d7297f064b91bfaf263ff11b9a2a, type: 2}
+  sourceTexture: {fileID: 8400000, guid: 973e456142444cda8d74b3f6fc5c09e9, type: 2}
   spotMaterial: {fileID: 2100000, guid: 62493708ebdf4a6d99b2a3892b2f0580, type: 2}
   spotRenderer: {fileID: 300004}
 --- !u!114 &-4331747121403554994
@@ -161,7 +161,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: a469d7297f064b91bfaf263ff11b9a2a, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: 973e456142444cda8d74b3f6fc5c09e9, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 500003}
   - component: {fileID: 500004}
   m_Layer: 0
-  m_Name: CameraIconCanvas_QHD
+  m_Name: CameraIconCanvas_8K
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -343,7 +343,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 2f2ebbd4eef75a2409a57d6ab3338785, type: 3}
+  m_Texture: {fileID: 2800000, guid: f4b04131b4b22b541a71165b98691659, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
