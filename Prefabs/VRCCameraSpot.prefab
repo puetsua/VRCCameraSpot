@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 300002}
   - component: {fileID: 300004}
   m_Layer: 0
-  m_Name: SpotSphere_PlayerCameraHere
+  m_Name: SpotOverlayQuad_Internal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,7 +210,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300000}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &300004
 MeshRenderer:
   m_ObjectHideFlags: 0

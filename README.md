@@ -12,7 +12,7 @@ Simple VRChat world camera spot prefab.
 ## Setup
 
 1. Move `SourceCamera_MoveMe` to the view you want to show.
-2. Move `SpotSphere_PlayerCameraHere` and `VisibleGuideSphere` to the place where players should use their VRChat camera.
+2. Move `SpotOverlayQuad_Internal` and `VisibleGuideSphere` to the place where players should use their VRChat camera.
 3. Players move their own camera into the sphere. In VR, this means the VRChat handheld camera. On desktop, this means the player's view camera.
 
 ## Notes
