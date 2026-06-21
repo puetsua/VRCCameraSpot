@@ -10,7 +10,21 @@ It uses the same basic trick as `Ottpossum/Camera System/Prefabs/EventCameraSyst
 4. `Shaders/VRCCameraSpotOverlay.shader` draws that mesh as a fullscreen overlay for cameras that see the spot.
 5. `Scripts/VRCCameraSpot.cs` wires the camera texture to the material and toggles `_ForceSpot` for desktop users.
 
-## Scene Setup
+## Prefab Setup
+
+Drag `Prefabs/VRCCameraSpot.prefab` into the scene.
+
+The prefab contains:
+
+- `VRCCameraSpot`: root object with the UdonSharp behavior and an interaction collider.
+- `SpotSphere_PlayerCameraHere`: the visible sphere that a player camera should look at or sit inside.
+- `SourceCamera_MoveMe`: the camera that renders the target view into the render texture.
+
+Move `SourceCamera_MoveMe` to the world position you want to broadcast. Move `SpotSphere_PlayerCameraHere` to the place where players should use their VRChat camera.
+
+For desktop usage, look at the spot and press `F10`, or interact with the root object if interaction is enabled. This sets `_ForceSpot` on the material, bypassing distance/FOV checks.
+
+## Manual Scene Setup
 
 Create this hierarchy in your scene:
 
