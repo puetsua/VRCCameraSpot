@@ -13,12 +13,12 @@ Simple VRChat world camera spot prefab.
 
 1. Move `SourceCamera_MoveMe` to the view you want to show.
 2. Move `SpotSphere_PlayerCameraHere` and `VisibleGuideSphere` to the place where players should use their VRChat camera.
-3. For VR users, place the VRChat camera inside or near the sphere.
-4. For desktop users, look at the spot and press `F10`, or interact with the root object.
+3. Players move their own camera into the sphere. In VR, this means the VRChat handheld camera. On desktop, this means the player's view camera.
 
 ## Notes
 
 - Duplicate `Materials/VRCCameraSpotOverlay.mat` and `RenderTextures/VRCCameraSpot.renderTexture` for each independent camera spot.
 - The default render texture is 1280x720.
+- The sphere is only a camera spot marker. It is not clickable.
 - This project is supported with Codex GPT-5.5.
 - MIT licensed. Based on `CameraSystem` by Ottpossum / rhaamo; see `THIRD_PARTY_NOTICES.md`.
