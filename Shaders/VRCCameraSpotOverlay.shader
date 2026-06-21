@@ -82,12 +82,15 @@ Shader "PuetsuaWorkshop/VRCCameraSpotOverlay"
                     if (fovH > _LimitFoV_H) { discard; }
                 }
 
-                i.uv.y *= _Aspect * _ScreenParams.y / _ScreenParams.x;
-                i.uv.y -= ((_Aspect * _ScreenParams.y / _ScreenParams.x) - 1.0f) * 0.5f;
+                float screenAspect = _ScreenParams.x / _ScreenParams.y;
 
-                if (i.uv.y > 1.0f || i.uv.y < 0.0f)
+                if (screenAspect > _Aspect)
                 {
-                    return float4(0.0f, 0.0f, 0.0f, 1.0f);
+                    i.uv.y = ((i.uv.y - 0.5f) * (_Aspect / screenAspect)) + 0.5f;
+                }
+                else
+                {
+                    i.uv.x = ((i.uv.x - 0.5f) * (screenAspect / _Aspect)) + 0.5f;
                 }
 
                 return tex2D(_MainTex, i.uv);
