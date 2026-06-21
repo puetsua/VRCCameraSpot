@@ -17,10 +17,11 @@ Drag `Prefabs/VRCCameraSpot.prefab` into the scene.
 The prefab contains:
 
 - `VRCCameraSpot`: root object with the UdonSharp behavior and an interaction collider.
-- `SpotSphere_PlayerCameraHere`: the visible sphere that a player camera should look at or sit inside.
+- `SpotSphere_PlayerCameraHere`: the overlay sphere that a player camera should look at or sit inside.
+- `VisibleGuideSphere`: a transparent visible marker showing where the spot is.
 - `SourceCamera_MoveMe`: the camera that renders the target view into the render texture.
 
-Move `SourceCamera_MoveMe` to the world position you want to broadcast. Move `SpotSphere_PlayerCameraHere` to the place where players should use their VRChat camera.
+Move `SourceCamera_MoveMe` to the world position you want to broadcast. Move `SpotSphere_PlayerCameraHere` and `VisibleGuideSphere` together to the place where players should use their VRChat camera.
 
 For desktop usage, look at the spot and press `F10`, or interact with the root object if interaction is enabled. This sets `_ForceSpot` on the material, bypassing distance/FOV checks.
 
@@ -42,6 +43,7 @@ Recommended setup:
 - Assign `SourceCamera` to the script's `Source Camera`.
 - Add a small quad, plane, or sphere as `SpotMesh`.
 - Assign `Materials/VRCCameraSpotOverlay.mat` to the spot mesh renderer.
+- Add a second guide mesh with `Materials/SpotSphereTransparent.mat` if players need a visible marker.
 - Assign the same material to the script's `Spot Material`.
 - Assign the spot mesh renderer to the script's `Spot Renderer`.
 
