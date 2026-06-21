@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3b0ee10b2a6b4ab48f6f339174abcb6b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _udonSharpBackingUdonBehaviour: {instanceID: 0}
+  - sourceCamera: {instanceID: 0}
+  - sourceTexture: {fileID: 8400000, guid: a469d7297f064b91bfaf263ff11b9a2a, type: 2}
+  - spotMaterial: {fileID: 2100000, guid: 62493708ebdf4a6d99b2a3892b2f0580, type: 2}
+  - spotRenderer: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
