@@ -253,7 +253,7 @@ MonoBehaviour:
   spawnRadius: 0
   spawnOrder: 2
   spawnOrientation: 0
-  ReferenceCamera: {fileID: 30005}
+  ReferenceCamera: {fileID: 30000}
   RespawnHeightY: -100
   ObjectBehaviourAtRespawnHeight: 0
   ForbidUserPortals: 0
