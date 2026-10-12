@@ -63,9 +63,9 @@ jobs:
           mkdir -p "Packages/$packageName"
           for entry in *; do
             case "$entry" in
-              # Repo-only entries that users don't install. Add agent docs,
-              # Documentation~ or Tests here if the repo gains them.
-              Packages) continue ;;
+              # Repo-only entries that users don't install. Documentation~ holds
+              # the README screenshots; the ~ only stops Unity importing it.
+              Packages|Documentation~) continue ;;
             esac
             mv "$entry" "Packages/$packageName/"
           done

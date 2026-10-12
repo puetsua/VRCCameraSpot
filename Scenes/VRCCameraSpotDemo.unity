@@ -266,10 +266,10 @@ MonoBehaviour:
   useAssignedLayers: 0
   DynamicPrefabs: []
   DynamicMaterials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 2100000, guid: 62493708ebdf4a6d99b2a3892b2f0580, type: 2}
   - {fileID: 2100000, guid: 440892f8ffdfcd6459c8a95b99169a6d, type: 2}
   - {fileID: 2100000, guid: 15c46aa60dd94022a1b6fc777677c7d0, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   LightMapsNear: []
   LightMapsFar: []
   LightMode: 0
@@ -335,11 +335,11 @@ MonoBehaviour:
     ID: 12
     SerializedTypeNames:
     - VRC.Udon.UdonBehaviour
-  - gameObject: {fileID: 0}
+  - gameObject: {fileID: 1540088918}
     ID: 13
     SerializedTypeNames:
     - VRC.Udon.UdonBehaviour
-  - gameObject: {fileID: 0}
+  - gameObject: {fileID: 2055456680}
     ID: 14
     SerializedTypeNames:
     - VRC.Udon.UdonBehaviour
@@ -817,6 +817,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2422196229443818634, guid: 31188c98d67e1ea4c8826ec2df7d2bd0,
+        type: 3}
+      propertyPath: _syncMethod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294551667490453595, guid: 31188c98d67e1ea4c8826ec2df7d2bd0,
+        type: 3}
+      propertyPath: _syncMethod
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6117554317748027409, guid: 31188c98d67e1ea4c8826ec2df7d2bd0,
         type: 3}
       propertyPath: serializationData.Prefab
@@ -889,6 +899,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31188c98d67e1ea4c8826ec2df7d2bd0, type: 3}
+--- !u!1 &1540088918 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7097624989559423332, guid: 31188c98d67e1ea4c8826ec2df7d2bd0,
+    type: 3}
+  m_PrefabInstance: {fileID: 240486377}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2055456680 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6589609067349496942, guid: 31188c98d67e1ea4c8826ec2df7d2bd0,
+    type: 3}
+  m_PrefabInstance: {fileID: 240486377}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

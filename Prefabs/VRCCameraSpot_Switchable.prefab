@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactTextPlacement: {fileID: 0}
-  interactText: Switch Resolution
+  interactText: Switch Resolution (Local)
   interactTextGO: {fileID: 0}
   proximity: 2
   SynchronizePosition: 0
