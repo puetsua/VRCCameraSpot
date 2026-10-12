@@ -10,7 +10,9 @@ A VRChat world camera spot: players who put their camera in the spot see a fixed
 
 ## Quick Start
 
-1. In the Project window, open **Packages → VRC Camera Spot → Prefabs**. Drag one of these into your scene: `VRCCameraSpot` (QHD), `VRCCameraSpot_4K` or `VRCCameraSpot_8K`.
+1. In the Project window, open **Packages → VRC Camera Spot → Prefabs** and drag one prefab into your scene:
+   - `VRCCameraSpot_Switchable`: players click the spot to switch between QHD, 4K and 8K. The switch is local, so it only affects that player.
+   - `VRCCameraSpot_QHD`, `VRCCameraSpot_4K` or `VRCCameraSpot_8K`: fixed resolution.
 2. Move `SourceCamera_MoveMe` to the view you want to show.
 3. Move `SpotOverlayQuad_Internal` and `VisibleGuideSphere` to the place where players should hold their camera.
 4. In game, players move their camera into the sphere to see the view. In VR that's the handheld camera; on desktop it's the player's view.
