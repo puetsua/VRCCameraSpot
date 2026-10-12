@@ -1,9 +1,12 @@
 name: Build Release packages
 
-# Manual only: the workflow creates the tag itself. Triggering on a pushed tag
-# would make git-cliff see no unreleased commits and produce empty notes.
+# Release by pushing a version tag, or by running manually (the workflow then
+# creates the tag from package.json's version).
 on:
   workflow_dispatch:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
 
 env:
   packageName: "VRCCameraSpot"
@@ -26,6 +29,14 @@ jobs:
         id: version
         run: echo "prop=$(jq -r .version package.json)" >> "$GITHUB_OUTPUT"
 
+      - name: Check tag matches package version
+        if: github.ref_type == 'tag'
+        run: |
+          if [ "$GITHUB_REF_NAME" != "${{ steps.version.outputs.prop }}" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match package.json version ${{ steps.version.outputs.prop }}"
+            exit 1
+          fi
+
       # Written outside the workspace on purpose: the next step sweeps every
       # non-dotfile at the root into the package folder, and the notes are not
       # part of what ships.
@@ -35,7 +46,9 @@ jobs:
           OUTPUT: ${{ runner.temp }}/RELEASE_NOTES.md
         with:
           config: .github/cliff.toml
-          args: --unreleased --tag ${{ steps.version.outputs.prop }} --strip all
+          # A pushed tag already sits on HEAD, so --unreleased would be empty;
+          # --current takes the commits belonging to that tag instead.
+          args: ${{ github.ref_type == 'tag' && '--current' || format('--unreleased --tag {0}', steps.version.outputs.prop) }} --strip all
 
       - name: Set Environment Variables
         run: |
