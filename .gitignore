@@ -65,9 +65,6 @@ ExportedObj/
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
-/LICENSE.meta
-/README.md.meta
-/THIRD_PARTY_NOTICES.md.meta
 Textures/*.clip
 Textures/*.clip.meta
 

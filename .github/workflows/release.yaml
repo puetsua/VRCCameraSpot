@@ -1,0 +1,101 @@
+name: Build Release packages
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+
+env:
+  packageName: "VRCCameraSpot"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          # git-cliff needs the whole history and the previous tags to work out
+          # what is new in this release.
+          fetch-depth: 0
+
+      - name: get version
+        id: version
+        run: echo "prop=$(jq -r .version package.json)" >> "$GITHUB_OUTPUT"
+
+      # Written outside the workspace on purpose: the next step sweeps every
+      # non-dotfile at the root into the package folder, and the notes are not
+      # part of what ships.
+      - name: Generate release notes
+        uses: orhun/git-cliff-action@v4
+        env:
+          OUTPUT: ${{ runner.temp }}/RELEASE_NOTES.md
+        with:
+          config: .github/cliff.toml
+          args: --unreleased --tag ${{ steps.version.outputs.prop }} --strip all
+
+      - name: Set Environment Variables
+        run: |
+          echo "zipFile=${{ env.packageName }}-${{ steps.version.outputs.prop }}.zip" >> $GITHUB_ENV
+          echo "unityPackage=${{ env.packageName }}-${{ steps.version.outputs.prop }}.unitypackage" >> $GITHUB_ENV
+
+      # Everything at the root ships except the entries listed here. Dotfiles are
+      # already left behind - the glob skips them - which is why .github and the
+      # git plumbing never reach the package.
+      - name: Make Package Folder
+        run: |
+          mkdir -p "Packages/$packageName"
+          for entry in *; do
+            case "$entry" in
+              # Repo-only entries that users don't install. Add agent docs,
+              # Documentation~ or Tests here if the repo gains them.
+              Packages) continue ;;
+            esac
+            mv "$entry" "Packages/$packageName/"
+          done
+
+      - name: Create Zip
+        uses: thedoctor0/zip-release@09336613be18a8208dfa66bd57efafd9e2685657
+        with:
+          type: "zip"
+          directory: "Packages/${{ env.packageName }}/"
+          filename: "../../${{ env.zipFile }}"
+          exclusions: ".git*"
+
+      - name: Track Package Meta Files
+        run: find "Packages/${{ env.packageName }}/" -name \*.meta >> metaList
+
+      - name: Create UnityPackage
+        uses: pCYSl5EDgo/create-unitypackage@v1.2.3
+        with:
+          package-path: ${{ env.unityPackage }}
+          include-files: metaList
+
+      - name: Make Release
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ steps.version.outputs.prop }}
+          body_path: ${{ runner.temp }}/RELEASE_NOTES.md
+          files: |
+            ${{ env.zipFile }}
+            ${{ env.unityPackage }}
+
+      - name: Notify VPM listing (puetsua/vrc-stuff)
+        env:
+          GH_TOKEN: ${{ secrets.VPM_LISTING_TOKEN }}
+          PACKAGE_NAME: vrchat.puetsuaworkshop.vrccameraspot
+          RELEASE_URL: https://github.com/${{ github.repository }}/releases/download/${{ steps.version.outputs.prop }}/${{ env.zipFile }}
+        run: |
+          jq -n \
+            --arg name "$PACKAGE_NAME" \
+            --arg url "$RELEASE_URL" \
+            '{event_type:"add-package-release",client_payload:{packageName:$name,releaseUrl:$url}}' \
+            | gh api --method POST \
+                -H "Accept: application/vnd.github+json" \
+                -H "X-GitHub-Api-Version: 2022-11-28" \
+                /repos/puetsua/vrc-stuff/dispatches \
+                --input -
