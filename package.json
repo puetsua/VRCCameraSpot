@@ -1,7 +1,7 @@
 {
   "name": "vrchat.puetsuaworkshop.vrccameraspot",
   "displayName": "VRC Camera Spot",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "VRChat world camera spot prefab that shows a fixed camera view to players who place their camera in the spot.",
   "author": {
     "name": "Pue-Tsuâ"
