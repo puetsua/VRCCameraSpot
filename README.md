@@ -10,6 +10,8 @@ A VRChat world camera spot: players who put their camera in the spot see a fixed
    - Or add it by hand: in VCC, go to **Settings → Packages → Add Repository** and paste `https://vrchat.puetsua.net/vpm/vpm.json`.
 2. In VCC, open your world project under **Manage Project** and add **VRC Camera Spot**.
 
+Alternatively, download `VRCCameraSpot-X.Y.Z-installer.unitypackage` from the [latest release](https://github.com/puetsua/VRCCameraSpot/releases/latest) and import it into your world project. It adds the repository to VCC and installs the package for you.
+
 ## Quick Start
 
 1. In the Project window, open **Packages → VRC Camera Spot → Prefabs** and drag one prefab into your scene:

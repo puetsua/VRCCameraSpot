@@ -54,6 +54,7 @@ jobs:
         run: |
           echo "zipFile=${{ env.packageName }}-${{ steps.version.outputs.prop }}.zip" >> $GITHUB_ENV
           echo "unityPackage=${{ env.packageName }}-${{ steps.version.outputs.prop }}.unitypackage" >> $GITHUB_ENV
+          echo "installerPackage=${{ env.packageName }}-${{ steps.version.outputs.prop }}-installer.unitypackage" >> $GITHUB_ENV
 
       # Everything at the root ships except the entries listed here. Dotfiles are
       # already left behind - the glob skips them - which is why .github and the
@@ -87,6 +88,17 @@ jobs:
           package-path: ${{ env.unityPackage }}
           include-files: metaList
 
+      # VPAI installer (github.com/anatawa12/VPMPackageAutoInstaller): importing
+      # it adds the VPM listing to VCC and installs the latest version of the
+      # package (>= this release) through VPM.
+      - name: Create VPAI Installer
+        run: |
+          curl -fsSL --get -o "${{ env.installerPackage }}" \
+            --data-urlencode "repo=https://vrchat.puetsua.net/vpm/vpm.json" \
+            --data-urlencode "package=vrchat.puetsuaworkshop.vrccameraspot" \
+            --data-urlencode "version=>=${{ steps.version.outputs.prop }}" \
+            https://api.anatawa12.com/create-vpai/
+
       - name: Make Release
         uses: softprops/action-gh-release@v3
         with:
@@ -95,6 +107,7 @@ jobs:
           files: |
             ${{ env.zipFile }}
             ${{ env.unityPackage }}
+            ${{ env.installerPackage }}
 
       - name: Notify VPM listing (puetsua/vrc-stuff)
         env:
