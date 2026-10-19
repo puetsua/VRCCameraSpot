@@ -50,6 +50,24 @@ jobs:
           # --current takes the commits belonging to that tag instead.
           args: ${{ github.ref_type == 'tag' && '--current' || format('--unreleased --tag {0}', steps.version.outputs.prop) }} --strip all
 
+      # Appended here rather than as a cliff.toml footer: --strip all drops the
+      # footer, and the text needs the version and SDK range from package.json.
+      - name: Append installation notes
+        env:
+          NOTES: ${{ runner.temp }}/RELEASE_NOTES.md
+          VERSION: ${{ steps.version.outputs.prop }}
+        run: |
+          worlds=$(jq -r '.vpmDependencies["com.vrchat.worlds"]' package.json)
+          cat >> "$NOTES" <<EOF
+
+          ### Installation
+
+          - **VCC (recommended):** open [Puetsua's VPM](https://vrchat.puetsua.net/vpm/), press **Add to VCC**, then add **VRC Camera Spot** to your project.
+          - **\`${packageName}-${VERSION}-installer.unitypackage\`:** import it into your world project. It adds the VPM repository to VCC and installs the latest VRC Camera Spot.
+            - Needs VRChat Worlds SDK \`${worlds}\`. Update the SDK in VCC first: the installer can't upgrade it while Unity is open.
+          - **\`${packageName}-${VERSION}.unitypackage\`** / **\`.zip\`:** the package itself, for a manual install.
+          EOF
+
       - name: Set Environment Variables
         run: |
           echo "zipFile=${{ env.packageName }}-${{ steps.version.outputs.prop }}.zip" >> $GITHUB_ENV
