@@ -63,7 +63,7 @@ jobs:
           ### Installation
 
           - **VCC (recommended):** open [Puetsua's VPM](https://vrchat.puetsua.net/vpm/), press **Add to VCC**, then add **VRC Camera Spot** to your project.
-          - **\`${packageName}-${VERSION}-installer.unitypackage\`:** import it into your world project. It adds the VPM repository to VCC and installs the latest VRC Camera Spot.
+          - **\`${packageName}-installer.unitypackage\`:** import it into your world project. It adds the VPM repository to VCC and installs the latest VRC Camera Spot.
             - Needs VRChat Worlds SDK \`${worlds}\`. Update the SDK in VCC first: the installer can't upgrade it while Unity is open.
           - **\`${packageName}-${VERSION}.unitypackage\`** / **\`.zip\`:** the package itself, for a manual install.
           EOF
@@ -72,7 +72,7 @@ jobs:
         run: |
           echo "zipFile=${{ env.packageName }}-${{ steps.version.outputs.prop }}.zip" >> $GITHUB_ENV
           echo "unityPackage=${{ env.packageName }}-${{ steps.version.outputs.prop }}.unitypackage" >> $GITHUB_ENV
-          echo "installerPackage=${{ env.packageName }}-${{ steps.version.outputs.prop }}-installer.unitypackage" >> $GITHUB_ENV
+          echo "installerPackage=${{ env.packageName }}-installer.unitypackage" >> $GITHUB_ENV
 
       # Everything at the root ships except the entries listed here. Dotfiles are
       # already left behind - the glob skips them - which is why .github and the
